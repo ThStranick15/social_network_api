@@ -37,7 +37,8 @@ userSchema.virtual('friendCount').get(function () {
 })
 
 //add pre on delete remove associated thoughts
-userSchema.pre('findOneAndDelete', async function(next){
+userSchema.pre('findByIdAndDelete', async function(next){
+    console.log('hello')
     await Thought.deleteMany({username: this.username})
     next()
 })
