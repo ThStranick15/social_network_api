@@ -39,9 +39,9 @@ const thoughtSchema = new Schema ({
         type: String,
         required: [true, 'username required']
     },
-    reactions:[{
+    reactions:[
         reactionSchema
-    }]
+    ]
 },{
     toJSON:{virtuals: true}
 })

@@ -4,7 +4,7 @@ const { User, Thought } = require('../models')
 //GET all users /api/users
 router.get('/users', async (req, res) => {
     try {
-        const users = await User.find()
+        const users = await User.find().populate('friends')
         res.json(users)
     } catch (error) {
         console.log(error)
@@ -15,7 +15,7 @@ router.get('/users', async (req, res) => {
 router.get('/users/:id', async (req, res) => {
     const id = req.params.id
     try {
-        const user = await User.findById(id)
+        const user = await User.findById(id).populate('friends')
         res.json(user)
     } catch (error) {
         console.log(error)
@@ -147,10 +147,10 @@ router.delete('/thoughts/:id', async (req, res) => {
 router.post('/thoughts/:thoughtId/reactions', async (req, res) => {
     try {
         const id = req.params.thoughtId
-        const newThought = await Thought.findById(id).populate('reactions')
-        newThought.reactions.push(req.body)
-        newThought.save()
-        res.json(newThought)
+        const thought = await Thought.findById(id)
+        thought.reactions.push(req.body)
+        thought.save()
+        res.json(thought)
     } catch (error) {
         console.log(error)
     }
@@ -161,7 +161,7 @@ router.delete('/thoughts/:thoughtId/reactions/:reactionId', async (req, res) => 
     try {
         const id = req.params.thoughtId
         const reactionId = req.params.reactionId
-        const thought = await Thought.findById(id).populate('reactions')
+        const thought = await Thought.findById(id)
         const i = thought.reactions.forEach(el => {
             if(el._id == reactionId)
                 return thought.reactions.indexOf(el)
