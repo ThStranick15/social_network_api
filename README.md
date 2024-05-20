@@ -21,7 +21,7 @@ To use the Social Network API, use Insomnia or another route tester. Here, one c
 
 ## Deployment
 Link to the repo -  [Tech Blog](https://github.com/ThStranick15/social_network_api)  
-Walkthrough Video - [Video]((https://drive.google.com/file/d/1phDnSYt98NTqMuGnYnyxuiZeYwWmfbk_/view)
+Walkthrough Video - [Video](https://drive.google.com/file/d/1phDnSYt98NTqMuGnYnyxuiZeYwWmfbk_/view)
 
 ## Contributors
 - Thomas Stranick:  https://github.com/ThStranick15
